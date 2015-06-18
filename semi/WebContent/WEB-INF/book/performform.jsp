@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
 <div class="container">
@@ -17,7 +18,7 @@
 			<div class="form-group">
 				<label for="title" class="col-lg-2 control-label">공연명</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" id="title">
+					<input type="text" class="form-control" id="title" name="title">
 				</div>
 			</div>
 			<div class="form-group">
@@ -125,5 +126,14 @@
 		</fieldset>
 	</form>
 </div>
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "contents",
+    sSkinURI: "/editor/SmartEditor2Skin.html",
+    fCreator: "createSEditor2"
+});
+</script>
 </body>
 </html>
