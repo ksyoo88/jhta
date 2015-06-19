@@ -1,1 +1,5 @@
 /rebel.xml
+/.gitignore
+/book/
+/comm/
+/log4j.properties
