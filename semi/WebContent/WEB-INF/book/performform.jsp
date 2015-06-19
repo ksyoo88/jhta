@@ -114,7 +114,7 @@
 			<div class="form-group">
 				<label for="contents" class="col-lg-2 control-label">공연 정보</label>
 				<div class="col-lg-10">
-					<textarea class="form-control" rows="3" id="contents"></textarea>
+					<textarea class="form-control" rows="3" id="contents" style="width: 100%;"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
