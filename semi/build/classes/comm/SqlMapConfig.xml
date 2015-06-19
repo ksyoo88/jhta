@@ -18,5 +18,6 @@
 
   <!-- sql이 정의된 xml 파일의 경로를 등록 -->
   <sqlMap resource="book/book.xml"/>
+  <sqlMap resource="join/join.xml"/>
 
 </sqlMapConfig>
