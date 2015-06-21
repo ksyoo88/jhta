@@ -40,7 +40,8 @@
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
 							<button type="submit" class="btn btn-default">로그인</button>
-							<a href="../index.html">홈으로 가기.</a> 
+							<a href="../join/join.jsp" class="btn btn-default">회원가입</a>
+							<a href="/index.jsp" class="btn btn-default">홈으로 가기.</a>
 						</div>
 					</div>
 				</form>

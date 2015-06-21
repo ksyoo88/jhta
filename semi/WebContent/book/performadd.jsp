@@ -69,6 +69,6 @@ MultipartRequest r= new MultipartRequest(request, saveDirectory,maxPostSize, "ut
 	
 	dao.addprice(price);
 	
-	response.sendRedirect("listdemo.jsp");
+	response.sendRedirect("performlist.jsp");
 	
 %>
