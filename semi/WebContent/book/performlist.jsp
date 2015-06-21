@@ -1,4 +1,4 @@
-<%@page import="comm.StringUtil"%>
+<%@page import="comm.CommUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="book.*, java.util.*"%>
 <!DOCTYPE html>
@@ -6,10 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>공연&middot;전시예매</title>
+<script src="/jquery/jquery-1.11.3.js" type="text/javascript" ></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="js/book.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -36,6 +36,7 @@
 	    });
 	  });
 </script>
+
 <style type="text/css">
 	.left {
 		float: left;
@@ -49,12 +50,18 @@
 		float: right;
 		width: 100px;
 	}
+	.search input {
+		-webkit-box-sizing: content-box;
+  		-moz-box-sizing: content-box;
+  		box-sizing: content-box;
+	}
 	
 	#wrapper { width: 650px; padding: 10px; border: 1px dotted red; overflow: auto;}
 	.photo {float:left; width:150px; margin: 20px; padding: 10px;   }
 	.photo p {margin: 3px 0 0 0; text-align:center; font-family: sans-serif; font-size: 14px;}
 	.photo img{width:198px; height:288px;}
 </style>
+
 </head>
 <body>
 	<div class="header">
@@ -64,15 +71,15 @@
 				<ul class="first">
 					<li class="first"><a href="/index.jsp">HOME</a></li>
 					<li><a href="/login/login.jsp">로그인</a></li>
-					<li><a href="/login/logout.html">로그아웃</a></li>
+					<li><a href="/login/logout.jsp">로그아웃</a></li>
 					<li><a href="/mypage/mypage.html">나의 사티룸</a></li>
-					<li><a href="/join/join.html">회원가입</a></li>
+					<li><a href="/join/joinform.jsp">회원가입</a></li>
 					<li><a href="/etc/sitemap.jsp">사이트맵</a></li>
 				</ul>
 			</div>
 			<form action="" class="search">
-				<input type="text" value="search" onblur="this.value=!this.value?'search':this.value;" onfocus="this.select()" onclick="this.value='';" /> <input
-					type="submit" id="submit" value="" />
+				<input type="text" value="search" onblur="this.value=!this.value?'search':this.value;" onfocus="this.select()" onclick="this.value='';" /> 
+				<input type="submit" id="submit" value="" />
 			</form>
 		</div>
 		<div id="navigation">
@@ -168,20 +175,20 @@
 	 String local= b.getLocal();
 			
 %>
-	<div class="photo">
-	<a href="/book/performview.jsp?no=<%=b.getNo() %>"><img src="../upload/perform/<%=image %>"></a>
-	<h4><a href="/book/performview.jsp?no=<%=b.getNo() %>"><%=title %></a></h4>
-	<p><%=genre %></p>
-	<p><%=StringUtil.nullToBlank(sdate) %><%if(sdate != null) { %>~ <%} %> </br>
-	<%=StringUtil.nullToBlank(ldate) %></p>
-	<p><%=local %></p>
-	<p><%=place %></p>
-	</div>
+					<div class="photo">
+						<a href="/book/performview.jsp?no=<%=b.getNo() %>"><img src="../upload/perform/<%=image %>"></a>
+						<h4><a href="/book/performview.jsp?no=<%=b.getNo() %>"><%=title %></a></h4>
+						<p><%=genre %></p>
+						<p><%=CommUtil.dateToString(sdate) %><%if(sdate != null) { %>~ <%} %> </br>
+						<%=CommUtil.dateToString(ldate) %></p>
+						<p><%=local %></p>
+						<p><%=place %></p>
+					</div>
 
 <%
  }
 %>
-</div>
+				</div>
 				<div class="paging">
 					<div class="first">
 						<ul>

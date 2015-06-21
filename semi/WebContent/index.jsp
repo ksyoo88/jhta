@@ -1,4 +1,12 @@
+<%@page import="member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%
+	Member userInfo = (Member)session.getAttribute("USER_INFO");
+	boolean login = false;
+	if(userInfo != null) {
+		login = true;
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,10 +21,10 @@
 				<div class="navigation">
 					<ul class="first">
 						<li class="first selected"><a href="/index.jsp">HOME</a></li>
-						<li><a href="/login/login.jsp">로그인</a></li>
-						<li><a href="/login/logout.jsp">로그아웃</a></li>
-						<li><a href="/mypage/mypage.jsp">나의 사티룸</a></li>
-						<li><a href="/join/join.jsp">회원가입</a></li>
+						<%if(!login) { %><li><a href="/login/login.jsp">로그인</a></li>
+						<li><a href="/join/joinform.jsp">회원가입</a></li><%} %>
+						<%if(login) { %><li><a href="/login/logout.jsp">로그아웃</a></li>
+						<li><a href="/mypage/mypage.jsp">나의 사티룸</a></li><%} %>
 						<li><a href="/etc/sitemap.jsp">사이트맵</a></li>
 					</ul>
 				</div>

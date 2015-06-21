@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MEMBER">
+
+	<insert id="signUp" parameterClass="member.Member">
+		insert into
+		member
+		(MEMBER_ID, EMAIL, PASSWORD, NAME, BIRTH, GENDER, ADDR,
+		ZIPCODE, PHONE, REGDATE)
+		values
+		(#memberId#, #email#, #password#, #name#,
+		#birth#, #gender#, #addr#, #zipcode#, #phone#, sysdate)
+	</insert>
+	
+	<select id="logincheck" parameterClass="member.Member" resultClass="member.Member">
+		select
+			MEMBER_ID, EMAIL, PASSWORD, NAME, BIRTH, GENDER, ADDR,
+			ZIPCODE, PHONE, REGDATE
+		from
+			member
+		where
+			member_id = #memberId#
+			and password = #password#
+	</select>
+
+</sqlMap>

@@ -28,9 +28,9 @@
 				<ul class="first">
 					<li class="first"><a href="/index.jsp">HOME</a></li>
 					<li><a href="/login/login.jsp">로그인</a></li>
-					<li><a href="/login/logout.html">로그아웃</a></li>
+					<li><a href="/login/logout.jsp">로그아웃</a></li>
 					<li><a href="/mypage/mypage.html">나의 사티룸</a></li>
-					<li><a href="/join/join.html">회원가입</a></li>
+					<li><a href="/join/joinform.jsp">회원가입</a></li>
 					<li class="selected"><a href="/etc/sitemap.jsp">사이트맵</a></li>
 				</ul>
 			</div>

@@ -7,13 +7,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript" ></script>
 <link rel="stylesheet" href="/css/style.css" />
 <style type="text/css">
 	.products {width: 650px;}
 	.container {width: 700px;}
-
+	.search input {
+		-webkit-box-sizing: content-box;
+  		-moz-box-sizing: content-box;
+  		box-sizing: content-box;
+	}
 </style>
 </head>
 <body>
@@ -24,20 +27,20 @@
 				<ul class="first">
 					<li class="first"><a href="/index.jsp">HOME</a></li>
 					<li><a href="/login/login.jsp">로그인</a></li>
-					<li><a href="/login/logout.html">로그아웃</a></li>
+					<li><a href="/login/logout.jsp">로그아웃</a></li>
 					<li><a href="/mypage/mypage.html">나의 사티룸</a></li>
-					<li><a href="/join/join.html">회원가입</a></li>
+					<li class="selected"><a href="/join/joinform.jsp">회원가입</a></li>
 					<li><a href="/etc/sitemap.jsp">사이트맵</a></li>
 				</ul>
 			</div>
 			<form action="" class="search">
-				<input type="text" value="search" onblur="this.value=!this.value?'search':this.value;" onfocus="this.select()" onclick="this.value='';" /> <input
-					type="submit" id="submit" value="" />
+				<input type="text" value="search" onblur="this.value=!this.value?'search':this.value;" onfocus="this.select()" onclick="this.value='';" />
+				<input type="submit" id="submit" value="" />
 			</form>
 		</div>
 		<div id="navigation">
 			<ul>
-				<li class="selected"><a href="/book/performlist.jsp">공연&middot;전시예매</a></li>
+				<li><a href="/book/performlist.jsp">공연&middot;전시예매</a></li>
 				<li><a href="/news/news.html">사티사랑방</a></li>
 				<li><a href="/notice/notice.html">사티고객지원</a></li>
 			</ul>
@@ -53,148 +56,90 @@
 		</div>
 		<div class="content">
 			<div class="products">
+			<!-- 
+			private String memberId;
+			private String password;
+			private String email;
+			private String name;
+			private Date birth;
+			private String gender;
+			private String addr;
+			private String zipcode;
+			private String phone;
+			private Date regdate;
+			 -->
+			
 				<div class="container">
-				   <form class="form-horizontal" action="index.jsp" method="post">
+				   <form class="form-horizontal" action="addmember.jsp" method="post">
 				      <fieldset>
 				         <legend>사티 가족되기</legend>
-				         <div class="form-group">
-				            <label for="title" class="col-lg-2 control-label">공연명</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="title" name="title">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="subtitle" class="col-lg-2 control-label">부제목</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="subtitle" name="subtitle">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="genre" class="col-lg-2 control-label">장르</label>
-				            <div class="col-lg-10">
-				               <select class="form-control" id="genre" name="genre">
-				                  <option>연극</option>
-				                  <option>뮤지컬</option>
-				                  <option>어린이</option>
-				                  <option>무용</option>
-				                  <option>음악</option>
-				                  <option>전통</option>
-				                  <option>전시</option>
-				               </select>
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="startdate" class="col-lg-2 control-label">공연기간</label>
-				            <div class="row">
-				               <div class="col-lg-4">
-				                  <input type="text" class="form-control" id="startdate" name="startdate">
-				               </div>
-				               <div class="col-lg-1">
-				                  ~
-				               </div>
-				               <div class="col-lg-4">
-				                  <input type="text" class="form-control" id="enddate" name="enddate">
-				               </div>
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="inputEmail" class="col-lg-2 control-label">공연시간</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="inputEmail" value="오전, 오후" name="time">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="runtime" class="col-lg-2 control-label">런닝타임</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="runtime" name="runtime">
-				            </div>
-				         </div>
-				           <div class="form-group">
-				            <label for="local" class="col-lg-2 control-label">지역</label>
-				            <div class="col-lg-10">
-				               <select class="form-control" id="local" name="local">
-				                  <option>서울</option>
-				                  <option>부산</option>
-				                  <option>대구</option>
-				                  <option>인천</option>
-				                  <option>광주</option>
-				                  <option>대전</option>
-				                  <option>울산</option>
-				                  <option>경기</option>
-				                  <option>충북</option>
-				                  <option>충남</option>
-				                  <option>전북</option>
-				                  <option>전남</option>
-				                  <option>경북</option>
-				                  <option>경남</option>
-				                  <option>강원</option>
-				                  <option>제주</option>
-				               </select>
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="place" class="col-lg-2 control-label">장소</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="place" name="place">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="grade" class="col-lg-2 control-label">관람등급</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="grade" name="grade">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="contact" class="col-lg-2 control-label">연락처</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="contact" name="contact">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="seat" class="col-lg-2 control-label">총 좌석</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="seat" name="seat">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="adult" class="col-lg-2 control-label">성인 가격</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="adult" name="adult">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="student" class="col-lg-2 control-label">학생 가격</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="student" name="student">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="kid" class="col-lg-2 control-label">미취학 가격</label>
-				            <div class="col-lg-10">
-				               <input type="text" class="form-control" id="kid" name="kid">
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="discountyn" class="col-lg-2 control-label">할인 여부</label>
-				            <div class="col-lg-10">
-				               <div class="checkbox">
-				                  <label><input type="radio" name="discount" id="discountyn" value="y">yes</label>
-				                   <label><input type="radio"  name="discount"  id="discountyn" value="n">no</label>
-				               </div>
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label class="col-lg-2 control-label">이미지</label>
-				            <div class="col-lg-10">
-				               <input type="file" name="photo"/><br/>
-				            </div>
-				         </div>
-				         <div class="form-group">
-				            <label for="contents" class="col-lg-2 control-label">공연 정보</label>
-				            <div class="col-lg-12">
-				               <textarea class="form-control" rows="3" id="contents" name="contents" style="width: 100%;"></textarea>
-				            </div>
-				         </div>
+
+
+							<div class="form-group">
+								<label for="memberId" class="col-lg-2 control-label">아이디</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="memberId" name="memberId">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-lg-2 control-label">비밀번호</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="passwordcheck" class="col-lg-2 control-label">비번 확인</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="passwordcheck" placeholder="Password">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name" class="col-lg-2 control-label">성명</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="name" name="name">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="email" class="col-lg-2 control-label">이메일</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="email" name="email" placeholder="test@email.com">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="birth" class="col-lg-2 control-label">생년월일</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="birth" name="birth" placeholder="1900-01-01">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="gender" class="col-lg-2 control-label">성별</label>
+								<div class="col-lg-10">
+									<div class="checkbox">
+										<label><input type="radio" name="gender" id="gender" value="M">남</label>
+											<label> <input type="radio" name="gender" value="F">여</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="addr" class="col-lg-2 control-label">주소</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="addr" name="addr">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="zipcode" class="col-lg-2 control-label">우편번호</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="000-000">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="phone" class="col-lg-2 control-label">전화번호</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="phone" name="phone">
+								</div>
+							</div>
+
 				         <div class="form-group">
 				            <div class="col-lg-10 col-lg-offset-9">
 				               <button type="submit" class="btn btn-primary add">등록</button>
@@ -207,35 +152,5 @@
 			</div>
 		</div>
 	</div>
-
-
-
-<script type="text/javascript">
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
-    oAppRef: oEditors,
-    elPlaceHolder: "contents",
-    sSkinURI: "/editor/SmartEditor2Skin.html",
-    fCreator: "createSEditor2"
-});
-
-$( document ).ready(function() {
-	$('.add').click(function(){
-		oEditors[0].exec("UPDATE_CONTENTS_FIELD", []);
-
-		var frm					= $('form[id=performform]');
-		var contents			= frm.find('#contents');
-		
-//		if (title.val() == '') {
-//			alert('제목을 입력해 주세요.');
-//			return false;
-//		}
-		
-		frm.submit();
-		
-		return false;
-	});
-});
-</script>
 </body>
 </html>

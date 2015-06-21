@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="comm.StringUtil"%>
+<%@page import="comm.CommUtil"%>
 <%@page import="book.*, java.util.*"%>
 <%
 	String num=request.getParameter("no");
@@ -55,9 +55,9 @@
 				<ul class="first">
 					<li class="first"><a href="/index.jsp">HOME</a></li>
 					<li><a href="/login/login.jsp">로그인</a></li>
-					<li><a href="/login/logout.html">로그아웃</a></li>
+					<li><a href="/login/logout.jsp">로그아웃</a></li>
 					<li><a href="/mypage/mypage.html">나의 사티룸</a></li>
-					<li><a href="/join/join.html">회원가입</a></li>
+					<li><a href="/join/joinform.jsp">회원가입</a></li>
 					<li><a href="/etc/sitemap.jsp">사이트맵</a></li>
 				</ul>
 			</div>
@@ -112,8 +112,8 @@
 						</tr>
 						<tr>
 							<td class="td_data"><img src="images/bullet_dot1.gif" alt="" width="2" height="2" hspace="5" style="vertical-align: middle" />기간</td>
-							<td class="td_data2"><%=StringUtil.nullToBlank(startdate) %>
-								<%if(startdate != null) { %>~ <%} %><%=StringUtil.nullToBlank(enddate) %></td>
+							<td class="td_data2"><%=CommUtil.dateToString(startdate) %>
+								<%if(startdate != null) { %>~ <%} %><%=CommUtil.dateToString(enddate) %></td>
 						</tr>
 						<tr>
 							<td class="td_data"><img src="images/bullet_dot1.gif" alt="" width="2" height="2" hspace="5" style="vertical-align: middle" />시간</td>
