@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NOTICE">
+
+	<insert id="addNotice" parameterClass="notice.Notice">
+		INSERT INTO NOTICE
+			(NO, TITLE, LOCAL, CONTENTS, HIT, REGDATE)
+		VALUES
+			(notice_seq.nextval, #title#, #local#, #contents#, 0, sysdate)
+	</insert>
+	
+	<select id="getNoticeList" parameterClass="notice.Notice" resultClass="notice.Notice">
+		SELECT *
+		FROM(
+			SELECT
+				NO, TITLE, LOCAL, CONTENTS, HIT, REGDATE,
+				FLOOR((ROW_NUMBER () OVER (ORDER BY NO DESC)-1)/10 + 1) PAGE
+			FROM
+				NOTICE
+			)
+		WHERE
+		PAGE = #page#
+	</select>
+	<select id="getNoticeCnt" resultClass="int">
+		SELECT count(*)
+		FROM
+			NOTICE
+	</select>
+	<select id="getNoticeView" parameterClass="int" resultClass="notice.Notice">
+		SELECT
+			NO, TITLE, LOCAL, CONTENTS, HIT, REGDATE
+		FROM
+			NOTICE
+		WHERE NO = #no#
+	</select>
+	<update id="updateViewCnt">
+		UPDATE NOTICE
+		SET HIT = (SELECT HIT FROM NOTICE WHERE NO = #no#) + 1
+		WHERE NO = #no#
+	</update>
+</sqlMap>

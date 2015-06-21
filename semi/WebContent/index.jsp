@@ -36,8 +36,8 @@
 			<div id="navigation">
 				<ul>
 					<li><a href="/book/performlist.jsp">공연&middot;전시예매</a></li>
-					<li><a href="/news/news.jsp">사티사랑방</a></li>
-					<li><a href="/notice/notice.jsp">사티고객지원</a></li>
+					<li><a href="/news/newslist.jsp">사티사랑방</a></li>
+					<li><a href="/notice/noticelist.jsp">사티고객지원</a></li>
 				</ul>
 			</div>
 		</div>
