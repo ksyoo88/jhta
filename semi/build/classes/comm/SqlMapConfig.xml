@@ -20,5 +20,6 @@
   <sqlMap resource="book/book.xml"/>
   <sqlMap resource="member/member.xml"/>
   <sqlMap resource="notice/notice.xml"/>
+  <sqlMap resource="main/main.xml"/>
 
 </sqlMapConfig>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MEMBER">
+<select id="getReviewList" resultClass="main.ReviewVO">
+	SELECT title, regdate, no   
+	FROM (SELECT title,regdate,no, ROW_NUMBER() OVER (ORDER BY regdate desc) R FROM review)
+	WHERE R BETWEEN 1 and 4
+</select>
+<select id="getPerformance" resultClass="main.PerformanceVO">
+	select * 
+	from (
+		SELECT no, regdate, title, ROWNUM NUM
+		FROM performance
+		ORDER BY regdate DESC
+		)
+	WHERE NUM BETWEEN 1 AND 7
+</select>
+
+<!--
+<select id="getSearchPerformance" parameterClass="" resultClass="main.PerformanceVO">
+	SELECT no, regdate, title
+	FROM performance
+	WHERE title LIKE '%아%'
+</select>
+  
+	<insert id="addNewMember" parameterClass="member.MemberVO">
+		INSERT INTO sample_member (mem_id, mem_name, mem_pwd, mem_email, mem_phone, mem_zipcode, mem_address, mem_regdate)
+		VALUES(#id#, #name#, #pwd#, #email#, #phone#, #zipcode#, #address#, #regdate#)
+	</insert>
+
+	<delete id="deleteMemberById" parameterClass="string">
+		delete from sample_member
+		where mem_id = #value#
+	</delete>
+	
+	<select id="getAllMember" resultClass="member.PerformanceVO">
+		SELECT mem_id as id, 
+				mem_name as name, mem_pwd as pwd, mem_email as email, 
+				mem_phone as phone, mem_zipcode as zipcode, mem_address as address, mem_regdate as regdate
+		FROM sample_member
+	</select>
+	
+	<select id="getMemberById" parameterClass="string" resultClass="member.MemberVO">
+		SELECT mem_id as id, 
+				mem_name as name, mem_pwd as pwd, mem_email as email, 
+				mem_phone as phone, mem_zipcode as zipcode, mem_address as address, mem_regdate as regdate
+		from sample_member
+		where mem_id = #value#
+	</select>
+	
+	<select id="searchMembersByName" parameterClass="string" resultClass="member.MemberVO">
+	SELECT mem_id as id, 
+				mem_name as name, mem_pwd as pwd, mem_email as email, 
+				mem_phone as phone, mem_zipcode as zipcode, mem_address as address, mem_regdate as regdate
+		from sample_member
+		where mem_name = #value#
+	</select>
+-->	
+</sqlMap>
