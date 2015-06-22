@@ -58,7 +58,7 @@
 					<li><a href="#">당첨자 및 공지</a></li>
 					<li><a href="#">관람후기</a></li>
 				</ul>
-				<a href="/notice/noticeform.jsp" class="btn btn-info">공지사항 등록</a>
+				<a href="/notice/noticeform.jsp" class="btn btn-info">사티소식 등록</a>
 			</div>
 		</div>
 		<div class="content">

@@ -81,8 +81,8 @@ $(document).ready(function(){
 		<div id="navigation">
 			<ul>
 				<li><a href="/book/performlist.jsp">공연&middot;전시예매</a></li>
-				<li class="selected"><a href="/news/newslist.jsp">사티사랑방</a></li>
-				<li><a href="/notice/noticelist.jsp">사티고객지원</a></li>
+				<li><a href="/news/newslist.jsp">사티사랑방</a></li>
+				<li class="selected"><a href="/notice/noticelist.jsp">사티고객지원</a></li>
 			</ul>
 		</div>
 	</div>
@@ -90,7 +90,7 @@ $(document).ready(function(){
 		<div class="sidebar">
 			<div class="first">
 				<h2>
-					<a href="/notice/noticelist.jsp">사티사랑방</a>
+					<a href="/notice/noticelist.jsp">사티고객지원</a>
 				</h2>
 				<ul>
 					<li class="selected"><a href="/notice/noticelist.jsp">공지사항</a></li>

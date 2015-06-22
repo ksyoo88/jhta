@@ -176,7 +176,7 @@
 			
 %>
 					<div class="photo">
-						<a href="/book/performview.jsp?no=<%=b.getNo() %>"><img src="../upload/perform/<%=image %>"></a>
+						<a href="/book/performview.jsp?no=<%=b.getNo() %>"><img src="<%if(!image.startsWith("http")) { %>../upload/perform/<%} %><%=image %>"></a>
 						<h4><a href="/book/performview.jsp?no=<%=b.getNo() %>"><%=title %></a></h4>
 						<p><%=genre %></p>
 						<p><%=CommUtil.dateToString(sdate) %><%if(sdate != null) { %>~ <%} %> </br>
